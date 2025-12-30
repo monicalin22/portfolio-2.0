@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,6 +12,41 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+// Example: Single font file
+// const myCustomFont = localFont({
+//   src: "./fonts/MyFont-Regular.woff2",
+//   variable: "--font-my-custom",
+//   display: "swap",
+// });
+
+// Example: Font family with multiple weights/styles
+// const myFontFamily = localFont({
+//   src: [
+//     {
+//       path: "./fonts/MyFont-Light.woff2",
+//       weight: "300",
+//       style: "normal",
+//     },
+//     {
+//       path: "./fonts/MyFont-Regular.woff2",
+//       weight: "400",
+//       style: "normal",
+//     },
+//     {
+//       path: "./fonts/MyFont-Bold.woff2",
+//       weight: "700",
+//       style: "normal",
+//     },
+//     {
+//       path: "./fonts/MyFont-Italic.woff2",
+//       weight: "400",
+//       style: "italic",
+//     },
+//   ],
+//   variable: "--font-my-family",
+//   display: "swap",
+// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
