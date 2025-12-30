@@ -13,40 +13,82 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Example: Single font file
-// const myCustomFont = localFont({
-//   src: "./fonts/MyFont-Regular.woff2",
-//   variable: "--font-my-custom",
-//   display: "swap",
-// });
-
-// Example: Font family with multiple weights/styles
-// const myFontFamily = localFont({
-//   src: [
-//     {
-//       path: "./fonts/MyFont-Light.woff2",
-//       weight: "300",
-//       style: "normal",
-//     },
-//     {
-//       path: "./fonts/MyFont-Regular.woff2",
-//       weight: "400",
-//       style: "normal",
-//     },
-//     {
-//       path: "./fonts/MyFont-Bold.woff2",
-//       weight: "700",
-//       style: "normal",
-//     },
-//     {
-//       path: "./fonts/MyFont-Italic.woff2",
-//       weight: "400",
-//       style: "italic",
-//     },
-//   ],
-//   variable: "--font-my-family",
-//   display: "swap",
-// });
+const mori = localFont({
+  src: [
+    {
+      path: "../public/fonts/PPMori-Thin.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PPMori-ThinItalic.woff2",
+      weight: "100",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/PPMori-Extralight.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PPMori-ExtralightItalic.woff2",
+      weight: "200",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/PPMori-Book.woff2",
+      weight: "350",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PPMori-BookItalic.woff2",
+      weight: "350",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/PPMori-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PPMori-RegularItalic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/PPMori-Semibold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PPMori-SemiboldItalic.woff2",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/PPMori-Extrabold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PPMori-ExtraboldItalic.woff2",
+      weight: "800",
+      style: "italic",
+    },
+    {
+      path: "../public/fonts/PPMori-Black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/PPMori-BlackItalic.woff2",
+      weight: "900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-mori",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -61,7 +103,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${mori.variable} antialiased`}
       >
         {children}
       </body>
