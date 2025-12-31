@@ -12,27 +12,49 @@ export default function LinkButton({ label, href, fullWidth = false }: LinkButto
       rel="noopener noreferrer"
       className={fullWidth ? "block" : "inline-block"}
       style={{
-        background: "var(--link-button-outline)",
-        padding: "1px",
+        position: "relative",
         borderRadius: "8px",
         boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.30), 0 2px 6px 2px rgba(0, 0, 0, 0.15)",
-        boxSizing: "border-box",
         width: fullWidth ? "100%" : undefined,
       }}
     >
+      {/* Gradient border layer */}
       <div
-        className="flex items-center w-full"
+        style={{
+          position: "absolute",
+          inset: 0,
+          borderRadius: "8px",
+          background: "var(--link-button-outline)",
+          zIndex: 0,
+        }}
+      />
+      {/* Inner content with solid background to show border */}
+      <div
+        className="flex items-center w-full relative"
         style={{
           height: "48px",
-          backgroundColor: "var(--link-button-background)",
-          borderRadius: "8px",
+          backgroundColor: "var(--background)",
+          borderRadius: "7px",
+          margin: "1px",
           paddingLeft: "16px",
           paddingRight: "12px",
           boxSizing: "border-box",
+          zIndex: 1,
         }}
       >
+        {/* Semi-transparent overlay */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundColor: "var(--link-button-background)",
+            borderRadius: "7px",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+        />
         <span
-          className="mono flex-1"
+          className="mono flex-1 relative z-10"
           style={{
             color: "var(--link-button-text)",
           }}
@@ -45,7 +67,7 @@ export default function LinkButton({ label, href, fullWidth = false }: LinkButto
           viewBox="0 0 256 256"
           width="16"
           height="16"
-          className="flex-shrink-0"
+          className="flex-shrink-0 relative z-10"
           style={{
             color: "var(--link-button-icon)",
           }}
