@@ -16,9 +16,10 @@ export default function CaseStudySidebar({ navItems }: CaseStudySidebarProps) {
   const [isOpen, setIsOpen] = useState(true);
   const [isSticky, setIsSticky] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("overview");
+  const [isIconHovered, setIsIconHovered] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  // Handle scroll to determine sticky state
+  // Handle scroll to determine sticky state (for visual feedback if needed)
   useEffect(() => {
     const handleScroll = () => {
       const heroHeight = 600;
@@ -116,41 +117,78 @@ export default function CaseStudySidebar({ navItems }: CaseStudySidebarProps) {
     setIsOpen(!isOpen);
   };
 
-  // Calculate icon position: right end of 2nd column when open, first column when closed
-  // For a 1440px container: (1440px / 12) * 2 = 240px for 2 columns
-  // Plus margins and gutters: simplified calculation
-  const iconPosition = isOpen
-    ? "calc(40px + (100vw - 1440px) / 2 + (1440px / 12 * 2) + 32px - 24px)"
-    : "40px";
-
   return (
     <div
       ref={sidebarRef}
-      className={`transition-all duration-300 ${
-        isSticky ? "fixed top-[60px]" : "absolute top-0"
-      } left-0 w-full z-40 pointer-events-none`}
+      className="transition-all duration-300 sticky pointer-events-none"
+      style={{
+        top: "60px",
+        width: "100%",
+      }}
     >
-      <div className="max-w-[1440px] mx-auto relative px-8">
-        <div
-          className="flex items-start gap-8 pointer-events-auto transition-all duration-300"
-          style={{ left: "40px" }}
-        >
+      <div
+        className="relative pointer-events-auto transition-all duration-300"
+        style={{ paddingTop: "0" }}
+      >
+          {/* Toggle Icon - always visible */}
+          <div className="flex items-center w-full mb-6 relative">
+            {isOpen && (
+              <button
+                onClick={() => handleNavClick(navItems[0].sectionId)}
+                className="sidebar transition-colors duration-200 cursor-pointer text-left whitespace-nowrap flex-1"
+                style={{
+                  color: activeSection === navItems[0].sectionId
+                    ? "var(--text-selected)"
+                    : "var(--unselected-icon)",
+                }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "var(--hovered-icon)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color =
+                  activeSection === navItems[0].sectionId
+                    ? "var(--text-selected)"
+                    : "var(--unselected-icon)";
+              }}
+              >
+                {navItems[0].label}
+              </button>
+            )}
+            <button
+              onClick={toggleSidebar}
+              className={`flex-shrink-0 ${isOpen ? "ml-4" : ""}`}
+              onMouseEnter={() => setIsIconHovered(true)}
+              onMouseLeave={() => setIsIconHovered(false)}
+            >
+              <Image
+                src={
+                  isOpen
+                    ? "/icons/sidebar-open.svg"
+                    : "/icons/sidebar-close.svg"
+                }
+                alt={isOpen ? "Open sidebar" : "Close sidebar"}
+                width={24}
+                height={24}
+                style={{
+                  opacity: isIconHovered ? 0.8 : 0.4,
+                  transition: "opacity 0.2s ease",
+                }}
+              />
+            </button>
+          </div>
+
           {/* Navigation Items */}
-          <nav
-            className={`transition-all duration-300 ${
-              isOpen
-                ? "opacity-100 max-w-none"
-                : "opacity-0 max-w-0 overflow-hidden"
-            }`}
-          >
-            <ul className="flex flex-col gap-6">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.sectionId;
-                const defaultColor = isActive
-                  ? "var(--text-selected)"
-                  : "var(--unselected-icon)";
-                return (
-                  <li key={item.sectionId}>
+          <nav>
+            {isOpen && (
+              <ul className="flex flex-col gap-6">
+                {navItems.slice(1).map((item) => {
+                  const isActive = activeSection === item.sectionId;
+                  const defaultColor = isActive
+                    ? "var(--text-selected)"
+                    : "var(--unselected-icon)";
+                  
+                  return (
+                    <li key={item.sectionId}>
                     <button
                       onClick={() => handleNavClick(item.sectionId)}
                       className="sidebar transition-colors duration-200 cursor-pointer text-left whitespace-nowrap"
@@ -166,41 +204,13 @@ export default function CaseStudySidebar({ navItems }: CaseStudySidebarProps) {
                     >
                       {item.label}
                     </button>
-                  </li>
-                );
-              })}
-            </ul>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
           </nav>
-
-          {/* Toggle Icon */}
-          <button
-            onClick={toggleSidebar}
-            className="transition-all duration-300 flex-shrink-0"
-            style={{
-              color: "var(--unselected-icon)",
-              position: "absolute",
-              left: iconPosition,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = "var(--hovered-icon)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = "var(--unselected-icon)";
-            }}
-          >
-            <Image
-              src={
-                isOpen
-                  ? "/icons/sidebar-close.svg"
-                  : "/icons/sidebar-open.svg"
-              }
-              alt={isOpen ? "Close sidebar" : "Open sidebar"}
-              width={24}
-              height={24}
-            />
-          </button>
         </div>
       </div>
-    </div>
   );
 }

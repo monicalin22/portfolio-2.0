@@ -9,6 +9,10 @@
   --text-hovered: rgba(254, 254, 254, 0.8); /* #FEFEFE at 80% opacity */
   --unselected-icon: rgba(254, 254, 254, 0.4); /* #FEFEFE at 40% opacity */
   --hovered-icon: rgba(254, 254, 254, 0.8); /* #FEFEFE at 80% opacity */
+  --link-button-text: rgba(254, 254, 254, 0.9); /* #FEFEFE at 90% opacity */
+  --link-button-icon: rgba(254, 254, 254, 0.9); /* #FEFEFE at 90% opacity */
+  --link-button-background: rgba(254, 254, 254, 0.15); /* #FEFEFE at 15% opacity */
+  --link-button-outline: linear-gradient(89deg, rgba(255, 255, 255, 0.12) -4.04%, rgba(255, 255, 255, 0.06) 54.3%, rgba(255, 255, 255, 0.09) 83.47%, rgba(255, 255, 255, 0.18) 112.64%);
   --foreground: var(--primary-text);
 }
 
@@ -19,6 +23,7 @@
   --font-mono: var(--font-geist-mono);
   --font-mori: var(--font-mori);
   --font-fraktion-mono: var(--font-fraktion-mono);
+  --font-gt-super-text: var(--font-gt-super-text);
 }
 
 
@@ -32,11 +37,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.body-font-1 {
+.b1 {
   font-family: var(--font-mori);
   font-size: 16px;
   line-height: 26px;
   letter-spacing: 0.024em; /* 2.4% */
+  font-weight: 500; /* medium */
+}
+
+h1 {
+  font-family: var(--font-gt-super-text);
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: 0.04em; /* 4% */
   font-weight: 500; /* medium */
 }
 
@@ -54,6 +67,15 @@ body {
   line-height: 24px;
   letter-spacing: 0.022em; /* 2.2% */
   font-weight: 600; /* semibold */
+}
+
+.subtitle {
+  font-family: var(--font-mori);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.16em; /* 16% */
+  font-weight: 600; /* semibold */
+  text-transform: uppercase;
 }
 
 /* 12-column grid system */

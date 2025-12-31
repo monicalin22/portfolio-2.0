@@ -17,7 +17,7 @@ export default function HomeNav() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 py-6 transition-all duration-300 ${
+      className={`sticky top-0 z-50 py-6 w-full transition-all duration-300 ${
         isScrolled
           ? "bg-[rgba(18,18,17,0.8)] backdrop-blur-md"
           : "bg-transparent"
