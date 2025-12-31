@@ -9,19 +9,24 @@ export default function LinkButton({ label, href }: LinkButtonProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block rounded-lg"
+      className="inline-block"
       style={{
         background: "var(--link-button-outline)",
         padding: "1px",
+        borderRadius: "8px",
         boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.30), 0 2px 6px 2px rgba(0, 0, 0, 0.15)",
+        boxSizing: "border-box",
       }}
     >
       <div
-        className="inline-flex items-center h-12 rounded-lg"
+        className="flex items-center w-full"
         style={{
+          height: "48px",
           backgroundColor: "var(--link-button-background)",
+          borderRadius: "8px",
           paddingLeft: "16px",
           paddingRight: "12px",
+          boxSizing: "border-box",
         }}
       >
         <span
@@ -43,6 +48,7 @@ export default function LinkButton({ label, href }: LinkButtonProps) {
             color: "var(--link-button-icon)",
           }}
         >
+          <rect width="256" height="256" fill="none"/>
           <line x1="64" y1="192" x2="192" y2="64" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"/>
           <polyline points="88 64 192 64 192 168" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="24"/>
         </svg>
