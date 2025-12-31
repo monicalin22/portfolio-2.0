@@ -47,64 +47,71 @@ export default function CaseStudyOverview({
         </div>
       )}
 
-      {/* Content Container - starts at 4th column */}
-      <div className="w-full max-w-[1440px] mx-auto px-8">
-        <div className="grid-12" style={{ paddingTop: heroImage ? "60px" : "0" }}>
-          {/* Company Name and Title - starts at column 4, spans 8 columns */}
-          <div style={{ gridColumn: "4 / 12", marginBottom: "60px" }}>
+      {/* Content Container - uses 9-column grid (sidebar takes 3 columns) */}
+      <div className="w-full" style={{ paddingTop: heroImage ? "60px" : "0" }}>
+        <div 
+          style={{ 
+            display: "grid",
+            gridTemplateColumns: "repeat(9, 1fr)",
+            columnGap: "32px",
+            width: "100%"
+          }}
+        >
+          {/* Company Name and Title - spans full width (columns 1-9) */}
+          <div style={{ gridColumn: "1 / 10", marginBottom: "60px" }}>
             <p className="mono text-secondary mb-2 uppercase">{companyName}</p>
             <h1 className="text-primary">{title}</h1>
           </div>
 
-          {/* Description and Impact Section - 60px below title */}
-          <div style={{ gridColumn: "4 / 12", marginBottom: "60px" }}>
-            <div className="grid-12" style={{ columnGap: "32px" }}>
-              {/* Description Block - 4 columns */}
-              <div className="col-span-4">
-                <p className="mono text-secondary mb-2">DESCRIPTION</p>
-                <p className="b1 text-primary">{description}</p>
-              </div>
+          {/* Description - spans columns 1-4 */}
+          <div style={{ gridColumn: "1 / 5", marginBottom: "60px" }}>
+            <p className="mono text-secondary mb-2">DESCRIPTION</p>
+            <p className="b1 text-primary">{description}</p>
+          </div>
 
-              {/* Impact Block - 4 columns starting at column 8 of parent grid */}
-              <div className="col-span-4" style={{ gridColumnStart: "8" }}>
-                <p className="mono text-secondary mb-2">IMPACT</p>
-                <p className="b1 text-primary">{impact}</p>
-              </div>
-            </div>
+          {/* Impact - spans columns 5-9 */}
+          <div style={{ gridColumn: "5 / 10", marginBottom: "60px" }}>
+            <p className="mono text-secondary mb-2">IMPACT</p>
+            <p className="b1 text-primary">{impact}</p>
           </div>
 
           {/* Metadata Section - 60px below description/impact */}
-          <div style={{ gridColumn: "4 / 12", marginBottom: "60px" }}>
-            <div className="grid-12" style={{ columnGap: "32px" }}>
-              <div className="col-span-2">
-                <p className="mono text-secondary mb-2">ROLE</p>
-                <p className="b1 text-primary">{role}</p>
-              </div>
-              <div className="col-span-2">
-                <p className="mono text-secondary mb-2">COLLABORATORS</p>
-                <p className="b1 text-primary">{collaborators}</p>
-              </div>
-              <div className="col-span-2">
-                <p className="mono text-secondary mb-2">DURATION</p>
-                <p className="b1 text-primary">{duration}</p>
-              </div>
-              <div className="col-span-2">
-                <p className="mono text-secondary mb-2">SKILLS</p>
-                <p className="b1 text-primary">{skills}</p>
-              </div>
-            </div>
+          {/* Role - spans columns 1-2 */}
+          <div style={{ gridColumn: "1 / 3", marginBottom: "60px" }}>
+            <p className="mono text-secondary mb-2">ROLE</p>
+            <p className="b1 text-primary">{role}</p>
+          </div>
+
+          {/* Collaborators - spans columns 3-4 */}
+          <div style={{ gridColumn: "3 / 5", marginBottom: "60px" }}>
+            <p className="mono text-secondary mb-2">COLLABORATORS</p>
+            <p className="b1 text-primary">{collaborators}</p>
+          </div>
+
+          {/* Duration - spans columns 5-6 */}
+          <div style={{ gridColumn: "5 / 7", marginBottom: "60px" }}>
+            <p className="mono text-secondary mb-2">DURATION</p>
+            <p className="b1 text-primary">{duration}</p>
+          </div>
+
+          {/* Skills - spans columns 7-9 */}
+          <div style={{ gridColumn: "7 / 10", marginBottom: "60px" }}>
+            <p className="mono text-secondary mb-2">SKILLS</p>
+            <p className="b1 text-primary">{skills}</p>
           </div>
 
           {/* Link Buttons - 60px below metadata */}
-          <div style={{ gridColumn: "4 / 12", marginBottom: "60px" }}>
-            <div className="grid-12" style={{ columnGap: "32px" }}>
-              {links.slice(0, 2).map((link, index) => (
-                <div key={index} className="col-span-4">
-                  <LinkButton label={link.label} href={link.href} />
-                </div>
-              ))}
+          {links.slice(0, 2).map((link, index) => (
+            <div 
+              key={index} 
+              style={{ 
+                gridColumn: index === 0 ? "1 / 5" : "5 / 9",
+                marginBottom: "60px"
+              }}
+            >
+              <LinkButton label={link.label} href={link.href} fullWidth={true} />
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

@@ -1,21 +1,23 @@
 interface LinkButtonProps {
   label: string;
   href: string;
+  fullWidth?: boolean;
 }
 
-export default function LinkButton({ label, href }: LinkButtonProps) {
+export default function LinkButton({ label, href, fullWidth = false }: LinkButtonProps) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-block"
+      className={fullWidth ? "block" : "inline-block"}
       style={{
         background: "var(--link-button-outline)",
         padding: "1px",
         borderRadius: "8px",
         boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.30), 0 2px 6px 2px rgba(0, 0, 0, 0.15)",
         boxSizing: "border-box",
+        width: fullWidth ? "100%" : undefined,
       }}
     >
       <div
