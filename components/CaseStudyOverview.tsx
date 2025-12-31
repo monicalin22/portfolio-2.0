@@ -32,7 +32,7 @@ export default function CaseStudyOverview({
   links,
 }: CaseStudyOverviewProps) {
   return (
-    <div style={{ width: "896px" }}>
+    <div className="w-full">
       {/* Hero Image - Full width, responsive (only if provided) */}
       {heroImage && (
         <div className="w-full relative" style={{ height: "600px" }}>

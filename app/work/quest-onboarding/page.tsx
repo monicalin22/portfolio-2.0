@@ -1,12 +1,14 @@
 import Nav from "@/components/nav";
 import CaseStudySidebar from "@/components/CaseStudySidebar";
-import CaseStudyOverview from "@/components/CaseStudyOverview";
+import CaseStudyInformation from "@/components/CaseStudyInformation";
 import Image from "next/image";
 
 export default function QuestOnboarding() {
   const navItems = [
     { label: "Overview", sectionId: "overview" },
     { label: "Problem", sectionId: "problem" },
+    { label: "Impact", sectionId: "impact" },
+    { label: "Solution", sectionId: "solution" },
     { label: "Design Process", sectionId: "design-process" },
     { label: "Initial Setup Steps", sectionId: "initial-setup-steps" },
     { label: "System Tutorial", sectionId: "system-tutorial" },
@@ -45,7 +47,7 @@ export default function QuestOnboarding() {
           
           {/* Main content column - starts at column 3, width 896px (8 columns) */}
           <main>
-            <CaseStudyOverview
+            <CaseStudyInformation
               heroImage=""
               companyName="META"
               title="VR First-Time User Experience"
