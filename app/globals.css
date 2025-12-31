@@ -4,6 +4,11 @@
   --background: #121211;
   --primary-text: #FEFEFE;
   --secondary-text: rgba(254, 254, 254, 0.7); /* #FEFEFE at 70% opacity */
+  --text-selected: #FEFEFE; /* 100% opacity */
+  --text-deselected: rgba(254, 254, 254, 0.4); /* #FEFEFE at 40% opacity */
+  --text-hovered: rgba(254, 254, 254, 0.8); /* #FEFEFE at 80% opacity */
+  --unselected-icon: rgba(254, 254, 254, 0.4); /* #FEFEFE at 40% opacity */
+  --hovered-icon: rgba(254, 254, 254, 0.8); /* #FEFEFE at 80% opacity */
   --foreground: var(--primary-text);
 }
 
@@ -43,6 +48,14 @@ body {
   font-weight: 400; /* Regular */
 }
 
+.sidebar {
+  font-family: var(--font-mori);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.022em; /* 2.2% */
+  font-weight: 600; /* semibold */
+}
+
 /* 12-column grid system */
 /* Column margin: 40px total (20px each side), Gutters: 32px */
 .grid-12 {
@@ -79,4 +92,16 @@ body {
 
 .text-secondary {
   color: var(--secondary-text);
+}
+
+.text-selected {
+  color: var(--text-selected);
+}
+
+.text-deselected {
+  color: var(--text-deselected);
+}
+
+.text-hovered {
+  color: var(--text-hovered);
 }
