@@ -34,8 +34,8 @@ export default function LinkButton({ label, href, fullWidth = false }: LinkButto
         style={{
           height: "48px",
           backgroundColor: "var(--background)",
-          borderRadius: "7px",
-          margin: "1px",
+          borderRadius: "6px",
+          margin: "2px",
           paddingLeft: "16px",
           paddingRight: "12px",
           boxSizing: "border-box",
@@ -48,7 +48,7 @@ export default function LinkButton({ label, href, fullWidth = false }: LinkButto
             position: "absolute",
             inset: 0,
             backgroundColor: "var(--link-button-background)",
-            borderRadius: "7px",
+            borderRadius: "6px",
             pointerEvents: "none",
             zIndex: 0,
           }}
@@ -57,6 +57,7 @@ export default function LinkButton({ label, href, fullWidth = false }: LinkButto
           className="mono flex-1 relative z-10"
           style={{
             color: "var(--link-button-text)",
+            textTransform: "uppercase",
           }}
         >
           {label}

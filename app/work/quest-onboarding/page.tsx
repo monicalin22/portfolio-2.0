@@ -33,30 +33,41 @@ export default function QuestOnboarding() {
       <div style={{ height: "60px" }}></div>
       
       {/* Two-column layout: sidebar + content */}
-      <div className="flex w-full max-w-[1440px] mx-auto px-8 gap-8">
-        {/* Sidebar column - fixed width, sticky */}
-        <aside className="flex-shrink-0" style={{ width: "240px" }}>
-          <CaseStudySidebar navItems={navItems} />
-        </aside>
-        
-        {/* Main content column - takes remaining space */}
-        <main className="flex-1 min-w-0">
-          <CaseStudyOverview
-            heroImage=""
-            companyName="Company Name"
-            title="Quest Onboarding"
-            description="Description text here..."
-            impact="Impact text here..."
-            role="Role here"
-            collaborators="Collaborators here"
-            duration="Duration here"
-            skills="Skills here"
-            links={[
-              { label: "View Live Site", href: "https://example.com" },
-              { label: "View Code", href: "https://github.com" },
-            ]}
-          />
-        </main>
+      <div className="w-full max-w-[1440px] mx-auto px-8">
+        <div className="relative" style={{ display: "grid", gridTemplateColumns: "240px 112px 896px", gap: "0" }}>
+          {/* Sidebar column - fixed width, sticky */}
+          <aside className="flex-shrink-0" style={{ width: "240px" }}>
+            <CaseStudySidebar navItems={navItems} />
+          </aside>
+          
+          {/* Gap column (1 column) */}
+          <div></div>
+          
+          {/* Main content column - starts at column 3, width 896px (8 columns) */}
+          <main>
+            <CaseStudyOverview
+              heroImage=""
+              companyName="META"
+              title="VR First-Time User Experience"
+              description="I lead strategy and design for Quest's system tutorial, balancing art direction, platform constraints, and user education needs to prepare millions for VR.  I also support design for device setup, ensuring a seamless first impression."
+              impact="Cut setup time by 57% (35 to 15 minutes). 
+Increased tutorial entry rate to 80% from 30%. 
+Boosted engagement with core OS features by 27%. Raised user preparedness sentiment to 95% from 60%."
+              role="Senior Product 
+Designer"
+              collaborators="Engineering, Art,
+5 Feature Teams"
+              duration="August 2024 to Present"
+              skills="UI Design,
+2D & 3D Prototyping,
+Unity & React Dev."
+              links={[
+                { label: "Meta Quest 3S", href: "https://www.meta.com/quest/quest-3s/" },
+                { label: "Meta Quest 3", href: "https://www.meta.com/quest/quest-3/" },
+              ]}
+            />
+          </main>
+        </div>
       </div>
     </>
   );
