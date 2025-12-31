@@ -59,7 +59,7 @@ export default function CaseStudyOverview({
         >
           {/* Company Name and Title - spans full width (columns 1-8) */}
           <div style={{ gridColumn: "1 / 9", marginBottom: "60px" }}>
-            <p className="mono text-secondary mb-2 uppercase">{companyName}</p>
+            <p className="subtitle text-secondary mb-2">{companyName}</p>
             <h1 className="text-primary">{title}</h1>
           </div>
 
